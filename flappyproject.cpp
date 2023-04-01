@@ -8,9 +8,22 @@ FlappyProject::FlappyProject(QWidget *parent)
     , ui(new Ui::FlappyProject)
 {
     ui->setupUi(this);
+
+    // Añadimos la cancion de fondo en bucle
+    player = new QMediaPlayer;
+    player->setLoops(QMediaPlayer::Infinite);
+    audioOutput = new QAudioOutput;
+    player->setAudioOutput(audioOutput);
+    player->setSource(QUrl("qrc:/assets/sounds/default_song.mp3"));
+    audioOutput->setVolume(50);
+    player->play();
+
+
+    // Inicializamos variables pajaro
     bird_pos_y = ui->bird->y();
     bird_vel_y = 0;
 
+    // Hacemos que update() se ejecute cada 15 ms
     QTimer* timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &FlappyProject::update);
     timer->start(15);
@@ -68,5 +81,7 @@ void FlappyProject::update()
     // Le restamos a la posición del pajaro la velocidad actual y lo aplicamos
     bird_pos_y -= bird_vel_y;
     ui->bird->move(ui->bird->x(), bird_pos_y);
+
+    qDebug() << player->loops();
 
 }

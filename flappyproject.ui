@@ -27,7 +27,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="assets.qrc">:/images/assets/images/default_bird_sprite.png</pixmap>
+     <pixmap resource="assets.qrc">:/assets/images/default_bird_sprite.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -46,7 +46,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="assets.qrc">:/images/assets/images/default_background.png</pixmap>
+     <pixmap resource="assets.qrc">:/assets/images/default_background.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

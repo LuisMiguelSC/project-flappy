@@ -1,9 +1,7 @@
 <RCC>
-    <qresource prefix="/images">
-        <file>assets/images/default_background.png</file>
-        <file>assets/images/default_bird_sprite.png</file>
-    </qresource>
-    <qresource prefix="/sounds">
-        <file>assets/sounds/default_song.mp3</file>
+    <qresource prefix="/assets">
+        <file>images/default_background.png</file>
+        <file>images/default_bird_sprite.png</file>
+        <file>sounds/default_song.mp3</file>
     </qresource>
 </RCC>

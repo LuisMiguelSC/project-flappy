@@ -2,6 +2,8 @@
 #define FLAPPYPROJECT_H
 
 #include <QMainWindow>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class FlappyProject; }
@@ -23,6 +25,8 @@ private:
     float JUMP_VELOCITY = 4;
 
     Ui::FlappyProject *ui;
+    QMediaPlayer *player;
+    QAudioOutput *audioOutput;
 
     float bird_pos_y;
     float bird_vel_y;

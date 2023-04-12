@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QMediaPlayer>
 #include <QAudioOutput>
+#include <QtGlobal>
+#include <QRandomGenerator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class FlappyProject; }
@@ -30,5 +32,10 @@ private:
 
     float bird_pos_y;
     float bird_vel_y;
+
+    float pipe_x;
+    float pipe_y;
+
+    int pipe_height = QRandomGenerator::global()->generate() % 301 + 100;
 };
 #endif // FLAPPYPROJECT_H

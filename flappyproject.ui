@@ -33,7 +33,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="background">
     <property name="geometry">
      <rect>
       <x>-4</x>
@@ -52,8 +52,28 @@
      <bool>true</bool>
     </property>
    </widget>
-   <zorder>label</zorder>
+   <widget class="QLabel" name="pipe">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>320</y>
+      <width>141</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="assets.qrc">:/assets/images/default_pipe.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>background</zorder>
    <zorder>bird</zorder>
+   <zorder>pipe</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

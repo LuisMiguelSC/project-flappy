@@ -23,6 +23,10 @@ FlappyProject::FlappyProject(QWidget *parent)
     bird_pos_y = ui->bird->y();
     bird_vel_y = 0;
 
+    // Inicializar la posición inicial de la tubería
+    pipe_x = ui->pipe->x();
+    pipe_y = ui->pipe->y();
+
     // Hacemos que update() se ejecute cada 15 ms
     QTimer* timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &FlappyProject::update);
@@ -60,7 +64,6 @@ void FlappyProject::keyPressEvent(QKeyEvent *event)
     /* Metodo encargado de resetear la velocidad al presionar espacio */
     if (event->key() == Qt::Key_Space) {
         bird_vel_y = JUMP_VELOCITY;
-        qDebug() << "Space bar pressed";
     } else if (event->key() == Qt::Key_W || event->key() == Qt::Key_Up) {
         bird_vel_y = JUMP_VELOCITY;
     } else if (event->key() == Qt::Key_S || event->key() == Qt::Key_Down) {
@@ -82,6 +85,19 @@ void FlappyProject::update()
     bird_pos_y -= bird_vel_y;
     ui->bird->move(ui->bird->x(), bird_pos_y);
 
-    qDebug() << player->loops();
+    // Actualizar la posición de la tubería en cada intervalo de tiempo
+    pipe_x -= 5;
+    ui->pipe->move(pipe_x, pipe_y);
+
+    // Si la tubería se sale de la pantalla, moverla a la posición inicial
+    if (pipe_x + ui->pipe->width() < 0) {
+        pipe_x = this->width();
+
+        pipe_height = QRandomGenerator::global()->generate() % 301 + 200; // Genera un número aleatorio entre 100 y 400
+
+        pipe_y = pipe_height;
+
+        qDebug() << pipe_height;
+    }
 
 }

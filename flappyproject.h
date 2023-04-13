@@ -35,7 +35,11 @@ private:
 
     float pipe_x;
     float pipe_y;
-
     int pipe_height = QRandomGenerator::global()->generate() % 301 + 100;
+
+    float top_pipe_x;
+    float top_pipe_y;
+
+    int pipe_velocity = 5;
 };
 #endif // FLAPPYPROJECT_H

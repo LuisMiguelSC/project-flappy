@@ -23,9 +23,11 @@ FlappyProject::FlappyProject(QWidget *parent)
     bird_pos_y = ui->bird->y();
     bird_vel_y = 0;
 
-    // Inicializar la posición inicial de la tubería
+    // Inicializar la posición inicial de las tuberías
     pipe_x = ui->pipe->x();
     pipe_y = ui->pipe->y();
+    top_pipe_x = ui->top_pipe->x();
+    top_pipe_y = ui->top_pipe->y();
 
     // Hacemos que update() se ejecute cada 15 ms
     QTimer* timer = new QTimer(this);
@@ -85,19 +87,21 @@ void FlappyProject::update()
     bird_pos_y -= bird_vel_y;
     ui->bird->move(ui->bird->x(), bird_pos_y);
 
-    // Actualizar la posición de la tubería en cada intervalo de tiempo
-    pipe_x -= 5;
+    // Actualizar la posición de las tuberías en cada intervalo de tiempo
+    pipe_x -= pipe_velocity;
+    top_pipe_x -= pipe_velocity;
     ui->pipe->move(pipe_x, pipe_y);
+    ui->top_pipe->move(top_pipe_x, top_pipe_y);
 
-    // Si la tubería se sale de la pantalla, moverla a la posición inicial
+    // Si la tuberías se salen de la pantalla, moverla a la posición inicial
     if (pipe_x + ui->pipe->width() < 0) {
         pipe_x = this->width();
+        top_pipe_x = this->width();
 
         pipe_height = QRandomGenerator::global()->generate() % 301 + 200; // Genera un número aleatorio entre 100 y 400
 
         pipe_y = pipe_height;
-
-        qDebug() << pipe_height;
+        top_pipe_y = pipe_height - 550;
     }
 
 }

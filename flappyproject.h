@@ -20,6 +20,7 @@ public:
     void keyPressEvent(QKeyEvent *event);
     void update();
     ~FlappyProject();
+    void siguienteCancion();
 
 
 private:

@@ -9,15 +9,24 @@ FlappyProject::FlappyProject(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Añadimos la cancion de fondo en bucle
+    // 3 canciones, una detrás de otra
     player = new QMediaPlayer;
-    player->setLoops(QMediaPlayer::Infinite);
     audioOutput = new QAudioOutput;
     player->setAudioOutput(audioOutput);
-    player->setSource(QUrl("qrc:/assets/sounds/default_song.mp3"));
     audioOutput->setVolume(50);
+
+    // 3 canciones, una detrás de otra
+    player = new QMediaPlayer;
+    audioOutput = new QAudioOutput;
+    player->setAudioOutput(audioOutput);
+    audioOutput->setVolume(50);
+
+    // Primera canción
+    player->setSource(QUrl("qrc:/assets/sounds/first_song.mp3"));
     player->play();
 
+    // Conectamos la señal mediaStatusChanged() a la ranura siguienteCancion() y así controlamos la canción que se tiene en cada momento
+    QObject::connect(player, &QMediaPlayer::mediaStatusChanged, this, &FlappyProject::siguienteCancion);
 
     // Inicializamos variables pajaro
     bird_pos_y = ui->bird->y();
@@ -105,3 +114,20 @@ void FlappyProject::update()
     }
 
 }
+
+void FlappyProject::siguienteCancion() // Para pasar de una canción a otra
+{
+    if (player->mediaStatus() == QMediaPlayer::EndOfMedia)
+    {
+        QString nextSong;
+        // Determina la siguiente canción según la canción actual
+        if (player->source() == QUrl("qrc:/assets/sounds/first_song.mp3"))
+            nextSong = "qrc:/assets/sounds/third_song.mp3"; // Esta realmente va al final, pero bueno, es para hacer la prueba
+        else
+            nextSong = "qrc:/assets/sounds/second_song.mp3"; // Canción final
+        // Cambia a la siguiente canción y la reproduce
+        player->setSource(QUrl(nextSong));
+        player->play();
+    }
+}
+

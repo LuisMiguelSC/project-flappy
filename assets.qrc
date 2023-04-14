@@ -6,5 +6,6 @@
         <file>images/default_rotated_pipe.png</file>
         <file>sounds/first_song.mp3</file>
         <file>sounds/third_song.mp3</file>
+        <file>sounds/second_song.mp3</file>
     </qresource>
 </RCC>

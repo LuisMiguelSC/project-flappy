@@ -122,9 +122,9 @@ void FlappyProject::siguienteCancion() // Para pasar de una canción a otra
         QString nextSong;
         // Determina la siguiente canción según la canción actual
         if (player->source() == QUrl("qrc:/assets/sounds/first_song.mp3"))
-            nextSong = "qrc:/assets/sounds/third_song.mp3"; // Esta realmente va al final, pero bueno, es para hacer la prueba
+            nextSong = "qrc:/assets/sounds/second_song.mp3"; // Segunda canción
         else
-            nextSong = "qrc:/assets/sounds/second_song.mp3"; // Canción final
+            nextSong = "qrc:/assets/sounds/third_song.mp3"; // Tercera canción
         // Cambia a la siguiente canción y la reproduce
         player->setSource(QUrl(nextSong));
         player->play();

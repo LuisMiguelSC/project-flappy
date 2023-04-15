@@ -1,0 +1,26 @@
+#include <iostream>    // Biblioteca para la entrada y salida estándar
+#include <conio.h>     // Biblioteca para la función getch()
+#include <chrono>
+#include <thread>
+using namespace std;
+
+int main() {
+    int contador = 0;  // Contador de segundos
+    char tecla;        // Variable para almacenar la tecla presionada
+
+    while (true) {     // Bucle infinito
+        std::cout << contador << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1)); // Espera 1 segundo
+        contador++;
+
+        if (_kbhit()) {  // Si se ha presionado una tecla
+            tecla = _getch();
+            break;       // Salir del bucle
+        }
+    }
+
+    cout << "Tecla presionada: " << tecla << endl;
+    cout << "Tiempo transcurrido: " << segundos << " segundos" << endl;
+
+    return 0;
+}

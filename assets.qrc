@@ -1,9 +1,14 @@
 <RCC>
     <qresource prefix="/assets">
         <file>images/default_background.png</file>
-        <file>images/default_bird_sprite.png</file>
+        <file>images/flappy_Azul.png</file>
         <file>sounds/default_song.mp3</file>
         <file>images/default_pipe.png</file>
         <file>images/default_rotated_pipe.png</file>
+        <file>images/flappy_Amarillo.png</file>
+        <file>images/flappy_Rojo.png</file>
+        <file>images/flappy_Espannol.png</file>
+        <file>images/flappy_Tano.png</file>
+        <file>images/flappy_Seductor.png</file>
     </qresource>
 </RCC>

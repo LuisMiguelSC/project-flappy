@@ -3,11 +3,32 @@
 #include <QKeyEvent>
 #include <QTimer>
 
-FlappyProject::FlappyProject(QWidget *parent)
+FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
     : QMainWindow(parent)
     , ui(new Ui::FlappyProject)
+
 {
+
+
     ui->setupUi(this);
+    this->setStyleSheet("QWidget { background-color: transparent; }");
+
+
+    //ui->bird->resize(71, 51);
+
+    qDebug() << selectedImagePath;
+    QPixmap birdPixmap(selectedImagePath);
+    ui->bird->setPixmap(birdPixmap.scaled(ui->bird->size(), Qt::KeepAspectRatio));
+    if (!birdPixmap.isNull()) {
+        ui->bird->setPixmap(birdPixmap.scaled(ui->bird->size(), Qt::KeepAspectRatio));
+    } else {
+        qDebug() << "Error: Unable to load image from path:" << selectedImagePath;
+    }
+
+
+    ui->bird->resize(71, 51);
+    ui->bird->move(100, 100);
+    //ui->bird->raise();
 
     // Añadimos la cancion de fondo en bucle
     player = new QMediaPlayer;
@@ -33,6 +54,7 @@ FlappyProject::FlappyProject(QWidget *parent)
     QTimer* timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &FlappyProject::update);
     timer->start(15);
+
 }
 
 FlappyProject::~FlappyProject()
@@ -103,5 +125,6 @@ void FlappyProject::update()
         pipe_y = pipe_height;
         top_pipe_y = pipe_height - 550;
     }
+    //qDebug() << "Bird height:" << ui->bird->pos().y();
 
 }

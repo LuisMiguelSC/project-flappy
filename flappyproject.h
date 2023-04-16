@@ -6,6 +6,10 @@
 #include <QAudioOutput>
 #include <QtGlobal>
 #include <QRandomGenerator>
+#include <QLabel>
+#include <QKeyEvent>
+#include <QTimer>
+#include <QTime>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class FlappyProject; }
@@ -21,6 +25,7 @@ public:
     void update();
     ~FlappyProject();
     void siguienteCancion();
+    void actualizar_contador();
 
 
 private:
@@ -42,5 +47,8 @@ private:
     float top_pipe_y;
 
     int pipe_velocity = 5;
+
+    int contador;
+    QLabel *label_contador;
 };
 #endif // FLAPPYPROJECT_H

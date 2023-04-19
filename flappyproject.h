@@ -41,5 +41,9 @@ private:
     float top_pipe_y;
 
     int pipe_velocity = 5;
+
+    float background_x;
+    float background_2_x;
+    float background_y;
 };
 #endif // FLAPPYPROJECT_H

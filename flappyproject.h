@@ -49,7 +49,12 @@ private:
 
     int pipe_velocity = 5;
 
+    float background_x;
+    float background_2_x;
+    float background_y;
+
     int contador;
     QLabel *label_contador;
+
 };
 #endif // FLAPPYPROJECT_H

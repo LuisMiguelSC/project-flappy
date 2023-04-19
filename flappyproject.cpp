@@ -57,6 +57,11 @@ FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
     top_pipe_x = ui->top_pipe->x();
     top_pipe_y = ui->top_pipe->y();
 
+    // Inicializar la posición inicial de los fondos
+    background_x = ui->background->x();
+    background_2_x = ui->background_2->x();
+    background_y = ui->background->y();
+
     // Hacemos que update() se ejecute cada 15 ms
     QTimer* timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &FlappyProject::update);
@@ -90,27 +95,6 @@ FlappyProject::~FlappyProject()
     delete ui;
 }
 
-/* PARA MOVERSE CON WASD
-void FlappyProject::keyPressEvent(QKeyEvent *event) {
-    switch (event->key()) {
-        case Qt::Key_W:
-            ui->label->move(ui->label->pos().x(), ui->label->pos().y() - 5);
-            break;
-        case Qt::Key_A:
-
-            break;
-        case Qt::Key_S:
-            ui->label->move(ui->label->pos().x(), ui->label->pos().y() + 5);
-            break;
-        case Qt::Key_D:
-            ui->label->move(ui->label->pos().x() + 5, ui->label->pos().y());
-            break;
-        default:
-            QWidget::keyPressEvent(event);
-    }
-}
-*/
-
 void FlappyProject::keyPressEvent(QKeyEvent *event)
 {
     /* Metodo encargado de resetear la velocidad al presionar espacio */
@@ -143,18 +127,31 @@ void FlappyProject::update()
     ui->pipe->move(pipe_x, pipe_y);
     ui->top_pipe->move(top_pipe_x, top_pipe_y);
 
+    background_x -= 1;
+    ui->background->move(background_x, background_y);
+    background_2_x -= 1;
+    ui->background_2->move(background_2_x, background_y);
+
     // Si la tuberías se salen de la pantalla, moverla a la posición inicial
     if (pipe_x + ui->pipe->width() < 0) {
         pipe_x = this->width();
         top_pipe_x = this->width();
 
-        pipe_height = QRandomGenerator::global()->generate() % 301 + 200; // Genera un número aleatorio entre 100 y 400
+        pipe_height = QRandomGenerator::global()->generate() % 301 + 300; // Genera un número aleatorio entre 100 y 400
 
         pipe_y = pipe_height;
         top_pipe_y = pipe_height - 550;
     }
     //qDebug() << "Bird height:" << ui->bird->pos().y();
 
+    // Movemos los dos fondos uno detrás del otro para que haga el efecto de que es uno infinito
+    if (background_x + ui->background->width()< 0){
+        background_x = background_2_x + ui->background_2->width();
+    }
+
+    if (background_2_x + ui->background_2->width()< 0){
+        background_2_x = background_x + ui->background->width();
+    }
 }
 
 void FlappyProject::siguienteCancion() // Para pasar de una canción a otra

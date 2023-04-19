@@ -27,6 +27,9 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="bird">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -39,7 +42,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="assets.qrc">:/assets/images/default_bird_sprite.png</pixmap>
+     <pixmap resource="assets.qrc">:/assets/images/red_bird.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -113,7 +116,7 @@
      <x>0</x>
      <y>0</y>
      <width>799</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

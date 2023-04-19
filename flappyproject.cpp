@@ -1,11 +1,32 @@
 ﻿#include "flappyproject.h"
 #include "ui_flappyproject.h"
 
-FlappyProject::FlappyProject(QWidget *parent)
+FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
     : QMainWindow(parent)
     , ui(new Ui::FlappyProject)
+
 {
+
+
     ui->setupUi(this);
+    this->setStyleSheet("QWidget { background-color: transparent; }");
+
+
+    //ui->bird->resize(71, 51);
+
+    qDebug() << selectedImagePath;
+    QPixmap birdPixmap(selectedImagePath);
+    ui->bird->setPixmap(birdPixmap.scaled(ui->bird->size(), Qt::KeepAspectRatio));
+    if (!birdPixmap.isNull()) {
+        ui->bird->setPixmap(birdPixmap.scaled(ui->bird->size(), Qt::KeepAspectRatio));
+    } else {
+        qDebug() << "Error: Unable to load image from path:" << selectedImagePath;
+    }
+
+
+    ui->bird->resize(71, 51);
+    ui->bird->move(100, 100);
+    //ui->bird->raise();
 
     // 3 canciones, una detrás de otra
     player = new QMediaPlayer;
@@ -62,10 +83,6 @@ FlappyProject::FlappyProject(QWidget *parent)
 
     // Luego también podemos poner que cuando se termine el juego se pare el contador (ya sea por colisión o por final) y que se muestre una pantallita
     // indicando el tiempo que se ha sobrevivido y la puntuación (número de tubos atravesados con éxito)
-
-
-
-
 }
 
 FlappyProject::~FlappyProject()
@@ -136,6 +153,7 @@ void FlappyProject::update()
         pipe_y = pipe_height;
         top_pipe_y = pipe_height - 550;
     }
+    //qDebug() << "Bird height:" << ui->bird->pos().y();
 
 }
 

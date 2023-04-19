@@ -21,6 +21,7 @@ class FlappyProject : public QMainWindow
 
 public:
     FlappyProject(QWidget *parent = nullptr);
+    explicit FlappyProject(QWidget *parent = nullptr, const QString &selectedImagePath = QString());// añadido
     void keyPressEvent(QKeyEvent *event);
     void update();
     ~FlappyProject();
@@ -29,7 +30,7 @@ public:
 
 
 private:
-    float GRAVITY = -0.1;
+    float GRAVITY = -0.2;
     float JUMP_VELOCITY = 4;
 
     Ui::FlappyProject *ui;

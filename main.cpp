@@ -1,12 +1,11 @@
-#include "flappyproject.h"
-
+//#include "flappyproject.h"
+#include "startwindow.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    FlappyProject w;
-    w.setWindowState(Qt::WindowFullScreen);
-    w.show();
+    StartWindow startWindow;
+    startWindow.show();
     return a.exec();
 }

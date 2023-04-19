@@ -6,6 +6,10 @@
 #include <QAudioOutput>
 #include <QtGlobal>
 #include <QRandomGenerator>
+#include <QLabel>
+#include <QKeyEvent>
+#include <QTimer>
+#include <QTime>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class FlappyProject; }
@@ -17,13 +21,16 @@ class FlappyProject : public QMainWindow
 
 public:
     FlappyProject(QWidget *parent = nullptr);
+    explicit FlappyProject(QWidget *parent = nullptr, const QString &selectedImagePath = QString());// añadido
     void keyPressEvent(QKeyEvent *event);
     void update();
     ~FlappyProject();
+    void siguienteCancion();
+    void actualizar_contador();
 
 
 private:
-    float GRAVITY = -0.1;
+    float GRAVITY = -0.2;
     float JUMP_VELOCITY = 4;
 
     Ui::FlappyProject *ui;
@@ -45,5 +52,9 @@ private:
     float background_x;
     float background_2_x;
     float background_y;
+
+    int contador;
+    QLabel *label_contador;
+
 };
 #endif // FLAPPYPROJECT_H

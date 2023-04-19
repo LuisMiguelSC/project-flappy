@@ -12,13 +12,16 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    flappyproject.cpp
+    flappyproject.cpp \
+    startwindow.cpp
 
 HEADERS += \
-    flappyproject.h
+    flappyproject.h \
+    startwindow.h
 
 FORMS += \
-    flappyproject.ui
+    flappyproject.ui \
+    startwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

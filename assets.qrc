@@ -2,8 +2,10 @@
     <qresource prefix="/assets">
         <file>images/default_background.png</file>
         <file>images/default_bird_sprite.png</file>
-        <file>sounds/default_song.mp3</file>
         <file>images/default_pipe.png</file>
         <file>images/default_rotated_pipe.png</file>
+        <file>sounds/first_song.mp3</file>
+        <file>sounds/third_song.mp3</file>
+        <file>sounds/second_song.mp3</file>
     </qresource>
 </RCC>

@@ -14,7 +14,7 @@
    <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Selección de personaje</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 251, 111);</string>
@@ -50,95 +50,11 @@ background-color:rgb(255, 200, 0)</string>
     <string>JUGAR</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="Facil">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>180</y>
-     <width>81</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Comic Sans MS</family>
-     <pointsize>-1</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-radius: 8px;
-color: rgb(0, 0, 255);
-font-size: 17px;
-font-family: &quot;Comic Sans MS&quot;;
-font-weight: bold;
-background-color:rgb(255, 200, 0)</string>
-   </property>
-   <property name="text">
-    <string>Facil</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Normal">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>180</y>
-     <width>81</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Comic Sans MS</family>
-     <pointsize>-1</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-radius: 8px;
-color: rgb(0, 0, 255);
-font-size: 17px;
-font-family: &quot;Comic Sans MS&quot;;
-font-weight: bold;
-background-color:rgb(255, 200, 0)</string>
-   </property>
-   <property name="text">
-    <string>Normal</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Dificil">
-   <property name="geometry">
-    <rect>
-     <x>334</x>
-     <y>180</y>
-     <width>91</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Comic Sans MS</family>
-     <pointsize>-1</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-radius: 8px;
-color: rgb(0, 0, 255);
-font-size: 17px;
-font-family: &quot;Comic Sans MS&quot;;
-font-weight: bold;
-background-color:rgb(255, 200, 0)</string>
-   </property>
-   <property name="text">
-    <string>Dificil</string>
-   </property>
-  </widget>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
      <x>89</x>
-     <y>30</y>
+     <y>90</y>
      <width>375</width>
      <height>110</height>
     </rect>

@@ -25,9 +25,14 @@ public:
     void keyPressEvent(QKeyEvent *event);
     void update();
     ~FlappyProject();
-    void siguienteCancion();
-    void actualizar_contador();
+    void nextSong();
+    void updateCounter();
 
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
+signals:
+    void flappyProjectDestroyed();
 
 private:
     float GRAVITY = -0.2;
@@ -56,5 +61,6 @@ private:
     int contador;
     QLabel *label_contador;
 
+    int score;
 };
 #endif // FLAPPYPROJECT_H

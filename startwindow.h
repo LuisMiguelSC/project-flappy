@@ -2,6 +2,8 @@
 #define STARTWINDOW_H
 
 #include <QDialog>
+#include "flappyproject.h"
+#include "ui_flappyproject.h"
 
 namespace Ui {
 class StartWindow;
@@ -20,6 +22,7 @@ private slots:
     void on_button1_clicked();
     void on_button2_clicked();
     void on_button3_clicked();
+    void onFlappyProjectDestroyed();
 
 private:
     Ui::StartWindow *ui;

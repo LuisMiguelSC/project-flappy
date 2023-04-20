@@ -7,12 +7,8 @@ FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
 
 {
 
-
     ui->setupUi(this);
     this->setStyleSheet("QWidget { background-color: transparent; }");
-
-
-    //ui->bird->resize(71, 51);
 
     qDebug() << selectedImagePath;
     QPixmap birdPixmap(selectedImagePath);
@@ -26,13 +22,6 @@ FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
 
     ui->bird->resize(71, 51);
     ui->bird->move(100, 100);
-    //ui->bird->raise();
-
-    // 3 canciones, una detrás de otra
-    player = new QMediaPlayer;
-    audioOutput = new QAudioOutput;
-    player->setAudioOutput(audioOutput);
-    audioOutput->setVolume(50);
 
     // 3 canciones, una detrás de otra
     player = new QMediaPlayer;
@@ -44,8 +33,8 @@ FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
     player->setSource(QUrl("qrc:/assets/sounds/first_song.mp3"));
     player->play();
 
-    // Conectamos la señal mediaStatusChanged() a la ranura siguienteCancion() y así controlamos la canción que se tiene en cada momento
-    QObject::connect(player, &QMediaPlayer::mediaStatusChanged, this, &FlappyProject::siguienteCancion);
+    // Conectamos la señal mediaStatusChanged() a la ranura nextSong() y así controlamos la canción que se tiene en cada momento
+    QObject::connect(player, &QMediaPlayer::mediaStatusChanged, this, &FlappyProject::nextSong);
 
     // Inicializamos variables pajaro
     bird_pos_y = ui->bird->y();
@@ -68,20 +57,16 @@ FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
     timer->start(15);
 
     // Ponemos el contador
-    // Agrega el QLabel para mostrar el contador en la parte superior izquierda de la ventana
     contador = 0;
-    label_contador = new QLabel("0:00", this);
-    label_contador->move(10, 10);
-
-
-    // Establece la fuente y el tamaño del QLabel
-    QFont font("Showcard Gothic", 18, QFont::Bold);
-    label_contador->setFont(font);
 
     // Creamos un temporizador para actualizar el contador periódicamente
     QTimer* temp = new QTimer(this);
-    connect(temp, &QTimer::timeout, this, &FlappyProject::actualizar_contador);
+    connect(temp, &QTimer::timeout, this, &FlappyProject::updateCounter);
     temp->start(1000); // Actualiza cada 1 segundo
+
+    // El juego termina en el 5:54 aprox.
+
+    score = 0;
 
     // Conectamos el evento de inicio del juego al método iniciar_juego() (esto para cuando le demos al botón de iniciar)
     //connect(boton_iniciar_juego, &QPushButton::clicked, this, &Juego::iniciar_juego);
@@ -93,6 +78,16 @@ FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
 FlappyProject::~FlappyProject()
 {
     delete ui;
+}
+
+void FlappyProject::closeEvent(QCloseEvent *event)
+{
+    emit flappyProjectDestroyed(); // Emitir la señal antes de cerrar
+
+    delete player; // Libera la memoria ocupada por el objeto QMediaPlayer
+    delete audioOutput; // Libera la memoria ocupada por el objeto QAudioOutput
+
+    QMainWindow::closeEvent(event); // Llamar a la función closeEvent de la clase base
 }
 
 void FlappyProject::keyPressEvent(QKeyEvent *event)
@@ -132,7 +127,7 @@ void FlappyProject::update()
     background_2_x -= 1;
     ui->background_2->move(background_2_x, background_y);
 
-    // Si la tuberías se salen de la pantalla, moverla a la posición inicial
+    // Si la tuberías se salen de la pantalla, moverla a la posición inicial. Añadimos uno a la puntuación.
     if (pipe_x + ui->pipe->width() < 0) {
         pipe_x = this->width();
         top_pipe_x = this->width();
@@ -141,8 +136,12 @@ void FlappyProject::update()
 
         pipe_y = pipe_height;
         top_pipe_y = pipe_height - 550;
+
+        score++;
+        QString score_str = QString::number(score);
+        ui->score->setText(score_str);
+
     }
-    //qDebug() << "Bird height:" << ui->bird->pos().y();
 
     // Movemos los dos fondos uno detrás del otro para que haga el efecto de que es uno infinito
     if (background_x + ui->background->width()< 0){
@@ -154,7 +153,7 @@ void FlappyProject::update()
     }
 }
 
-void FlappyProject::siguienteCancion() // Para pasar de una canción a otra
+void FlappyProject::nextSong() // Para pasar de una canción a otra
 {
     if (player->mediaStatus() == QMediaPlayer::EndOfMedia)
     {
@@ -170,12 +169,12 @@ void FlappyProject::siguienteCancion() // Para pasar de una canción a otra
     }
 }
 
-void FlappyProject::actualizar_contador()
+void FlappyProject::updateCounter()
 {
     contador++;
     QTime tiempo(0, 0);
     tiempo = tiempo.addSecs(contador);
     QString tiempo_str;
     tiempo_str = tiempo.toString("m:ss");
-    label_contador->setText(tiempo_str);
+    ui->timer->setText(tiempo_str);
 }

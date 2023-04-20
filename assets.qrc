@@ -15,5 +15,7 @@
         <file>sounds/third_song.mp3</file>
         <file>sounds/second_song.mp3</file>
         <file>images/default_coin.png</file>
+        <file>images/fondo1_blur.png</file>
+        <file>images/fondo2_blur.png</file>
     </qresource>
 </RCC>

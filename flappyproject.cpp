@@ -140,9 +140,6 @@ void FlappyProject::update()
         score++;
         QString score_str = QString::number(score);
         ui->score->setText(score_str);
-
-        if (score%16 == 0) pipe_velocity++;
-
     }
 
     // Movemos los dos fondos uno detrás del otro para que haga el efecto de que es uno infinito
@@ -168,6 +165,7 @@ void FlappyProject::nextSong() // Para pasar de una canción a otra
         // Cambia a la siguiente canción y la reproduce
         player->setSource(QUrl(nextSong));
         player->play();
+        pipe_velocity = pipe_velocity+3; // Aumentamos la velocidad al cambiar de canción (se pasa al siguiente nivel)
     }
 }
 

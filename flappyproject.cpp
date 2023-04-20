@@ -64,7 +64,7 @@ FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
     connect(temp, &QTimer::timeout, this, &FlappyProject::updateCounter);
     temp->start(1000); // Actualiza cada 1 segundo
 
-    // El juego termina en el 5:54 aprox.
+    // El juego termina en el 5:52 aprox.
 
     score = 0;
 
@@ -140,6 +140,8 @@ void FlappyProject::update()
         score++;
         QString score_str = QString::number(score);
         ui->score->setText(score_str);
+
+        if (score%16 == 0) pipe_velocity++;
 
     }
 

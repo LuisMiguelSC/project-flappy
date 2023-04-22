@@ -150,7 +150,54 @@ void FlappyProject::update()
     if (background_2_x + ui->background_2->width()< 0){
         background_2_x = background_x + ui->background->width();
     }
+
+    //qDebug() << "Bird height:" << ui->bird->pos().y();
+
+    // Movemos los dos fondos uno detrás del otro para que haga el efecto de que es uno infinito
+    if (background_x + ui->background->width()< 0){
+        background_x = background_2_x + ui->background_2->width();
+    }
+
+    if (background_2_x + ui->background_2->width()< 0){
+        background_2_x = background_x + ui->background->width();
+    }
+    //Si el pajaro se sale de la pantalla se detiene el juego
+    if (bird_pos_y + ui->bird->width() < 0  || bird_pos_y+ui->bird->width() > ui->background->height()){
+        qDebug()<<"Limites imagen";
+    }
+
+    if((bird_pos_y + ui->bird->width() >pipe_y)  &&( 100 + ui->bird->width() >pipe_x )){
+        qDebug()<<"Colision";
+    }
+
+    if((bird_pos_y + ui->bird->width() >top_pipe_y)  &&( 100 + ui->bird->width() >top_pipe_x )){
+        qDebug()<<"Colision";
+    }
+
+
+    //Se reinicia el contador
+
+    //contador=0;
+    // QTime tiempo(0, 0);
+    //tiempo = tiempo.addSecs(contador);
+    // QString tiempo_str;
+    // tiempo_str = tiempo.toString("m:ss");
+    // label_contador->setText(tiempo_str);
+
+    // ui->bird->move(100, 100);
+
+    //bird_pos_y = ui->bird->y();
+    // ui->pipe->move(pipe_x, pipe_y);
+    // ui->top_pipe->move(top_pipe_x, top_pipe_y);
+    // pipe_x = ui->pipe->x();
+    // pipe_y = ui->pipe->y();
+    //top_pipe_x = ui->top_pipe->x();
+    //top_pipe_y = ui->top_pipe->y();
+    // }
+
 }
+
+
 
 void FlappyProject::nextSong() // Para pasar de una canción a otra
 {

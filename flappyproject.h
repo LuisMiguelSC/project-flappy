@@ -27,6 +27,7 @@ public:
     ~FlappyProject();
     void nextSong();
     void updateCounter();
+    void openGameOver();
 
 protected:
     void closeEvent(QCloseEvent *event) override;

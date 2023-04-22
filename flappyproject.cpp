@@ -1,5 +1,6 @@
 ﻿#include "flappyproject.h"
 #include "ui_flappyproject.h"
+#include "gameover.h"
 
 FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
     : QMainWindow(parent)
@@ -162,16 +163,23 @@ void FlappyProject::update()
         background_2_x = background_x + ui->background->width();
     }
     //Si el pajaro se sale de la pantalla se detiene el juego
-    if (bird_pos_y + ui->bird->width() < 0  || bird_pos_y+ui->bird->width() > ui->background->height()){
-        qDebug()<<"Limites imagen";
+    if (bird_pos_y + ui->bird->height() < 0  || bird_pos_y+ui->bird->width() > ui->background->height()){
+
+        openGameOver();
     }
 
-    if((bird_pos_y + ui->bird->width() >pipe_y)  &&( 100 + ui->bird->width() >pipe_x )){
-        qDebug()<<"Colision";
+    if((bird_pos_y + ui->bird->height() -3>pipe_y)  && ( ui->bird->x()+ ui->bird->width()>pipe_x )){
+        qDebug()<<pipe_y;
+        qDebug()<<bird_pos_y + ui->bird->height();
+        qDebug() << "Entro 1:";
+        openGameOver();
     }
 
-    if((bird_pos_y + ui->bird->width() >top_pipe_y)  &&( 100 + ui->bird->width() >top_pipe_x )){
-        qDebug()<<"Colision";
+    if((bird_pos_y+3  <top_pipe_y+ui->top_pipe->height())  &&( ui->bird->x()+ ui->bird->width() >top_pipe_x )){
+        qDebug()<<top_pipe_y+ui->top_pipe->height();
+        qDebug()<<bird_pos_y;
+        qDebug() << "Entro 2:";
+        openGameOver();
     }
 
 
@@ -195,6 +203,17 @@ void FlappyProject::update()
     //top_pipe_y = ui->top_pipe->y();
     // }
 
+}
+void FlappyProject::openGameOver(){
+    // Crea un objeto de la ventana Game Over
+    gameover *gameOverDialog = new gameover();
+
+    // Cierra y elimina la ventana actual
+    this->close();
+    this->deleteLater();
+
+    // Muestra la ventana Game Over
+    gameOverDialog->show();
 }
 
 

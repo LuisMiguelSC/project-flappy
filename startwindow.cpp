@@ -26,8 +26,8 @@ StartWindow::StartWindow(QWidget *parent) :
 void StartWindow::openGameWindow()
 {
     /* Función para empezar la ventana de juego al darle a empezar */
+    FlappyProject *flappyProject = new FlappyProject(nullptr, selectedImagePath);
 
-    FlappyProject *flappyProject = new FlappyProject(this,selectedImagePath);
 
     // Conectamos la señal de destruirse con el slot del launcher para recibir dicha señal
     connect(flappyProject, &FlappyProject::flappyProjectDestroyed, this, &StartWindow::onFlappyProjectDestroyed);
@@ -38,6 +38,10 @@ void StartWindow::openGameWindow()
 
     // Evitamos iniciar otra ventana
     disconnect(ui->Inicio, &QPushButton::clicked, this, &StartWindow::openGameWindow);
+
+    // Cierra y elimina la ventana actual
+    this->close();
+
 }
 
 

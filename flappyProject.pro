@@ -11,16 +11,19 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    gameover.cpp \
     main.cpp \
     flappyproject.cpp \
     startwindow.cpp
 
 HEADERS += \
     flappyproject.h \
+    gameover.h \
     startwindow.h
 
 FORMS += \
     flappyproject.ui \
+    gameover.ui \
     startwindow.ui
 
 # Default rules for deployment.

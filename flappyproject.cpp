@@ -2,6 +2,7 @@
 #include "ui_flappyproject.h"
 #include "gameover.h"
 
+#include <Qtimer>
 FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
     : QMainWindow(parent)
     , ui(new Ui::FlappyProject)
@@ -10,6 +11,9 @@ FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
 
     ui->setupUi(this);
     this->setStyleSheet("QWidget { background-color: transparent; }");
+
+    //Probandooooo
+
 
     qDebug() << selectedImagePath;
     QPixmap birdPixmap(selectedImagePath);
@@ -243,4 +247,12 @@ void FlappyProject::updateCounter()
     QString tiempo_str;
     tiempo_str = tiempo.toString("m:ss");
     ui->timer->setText(tiempo_str);
+
+
+
+
+
 }
+
+//probando
+

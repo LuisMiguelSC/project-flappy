@@ -28,13 +28,14 @@ public:
     void nextSong();
     void updateCounter();
     void openGameOver();
+    void showOtherWindow();
 
 protected:
     void closeEvent(QCloseEvent *event) override;
 
 signals:
     void flappyProjectDestroyed();
-
+    void puntuacion();
 private:
     float GRAVITY = -0.2;
     float JUMP_VELOCITY = 4;
@@ -63,5 +64,9 @@ private:
     QLabel *label_contador;
 
     int score;
+
+    //El tiempo final de los cojones
+
+
 };
 #endif // FLAPPYPROJECT_H

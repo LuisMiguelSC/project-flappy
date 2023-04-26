@@ -2,8 +2,6 @@
 #define STARTWINDOW_H
 
 #include <QDialog>
-#include "flappyproject.h"
-#include "ui_flappyproject.h"
 
 namespace Ui {
 class StartWindow;

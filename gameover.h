@@ -24,7 +24,6 @@ class gameover : public QDialog
 public:
     explicit gameover(QWidget *parent = nullptr);
     ~gameover();
-    void ONpuntuacion();
     void tiempo(QString t);
     void openpuntuacion(QString p);
     void scoreboard();
@@ -39,8 +38,6 @@ public:
 
 private slots:
     void on_returnMenu_clicked();
-
-
 
 private:
     Ui::gameover *ui;

@@ -28,7 +28,6 @@ public:
     void nextSong();
     void updateCounter();
     void openGameOver();
-    void showOtherWindow();
 
 protected:
     void closeEvent(QCloseEvent *event) override;

@@ -8,13 +8,7 @@ gameover::gameover(QWidget *parent) :
     ui(new Ui::gameover)
 {
     ui->setupUi(this);
-
-    // NO SÉ PARA QUÉ ES ESTO, ASÍ QUE LO COMENTO Y ME DECÍS
-    //QTimer *timer = new QTimer(this);
-    //connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
-
 }
-
 
 
 gameover::~gameover()
@@ -77,10 +71,4 @@ void gameover::scoreboard(){
         result += std::to_string(i+1) + ".   " + "Pts:  " + std::to_string(data[i].punt) + "    Tiempo:  " + data[i].tm + "\n";
     }
     ui->textEdit->setText(QString::fromStdString(result));
-}
-
-void gameover::ONpuntuacion() // esto qué hace?
-{
-
-
 }

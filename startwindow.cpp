@@ -96,5 +96,5 @@ void StartWindow::applyUnselectedStyle(QPushButton *button) {
 void StartWindow::on_pushSalir_clicked()
 {
     this->close();
-
+    this->deleteLater();
 }

@@ -21,7 +21,10 @@ StartWindow::StartWindow(QWidget *parent) :
     connect(ui->button1, &QPushButton::clicked, this, &StartWindow::on_button1_clicked);
     connect(ui->button2, &QPushButton::clicked, this, &StartWindow::on_button2_clicked);
     connect(ui->button3, &QPushButton::clicked, this, &StartWindow::on_button3_clicked);
+    connect(ui->Salir, &QPushButton::clicked, this, &StartWindow::on_pushSalir_clicked);
+
 }
+
 
 void StartWindow::openGameWindow()
 {
@@ -90,4 +93,8 @@ void StartWindow::applyUnselectedStyle(QPushButton *button) {
     button->setStyleSheet("border: none;");
 }
 
+void StartWindow::on_pushSalir_clicked()
+{
+    this->close();
 
+}

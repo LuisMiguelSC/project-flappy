@@ -21,6 +21,7 @@ private slots:
     void on_button2_clicked();
     void on_button3_clicked();
     void onFlappyProjectDestroyed();
+    void on_pushSalir_clicked();
 
 private:
     Ui::StartWindow *ui;

@@ -17,5 +17,17 @@
         <file>images/default_coin.png</file>
         <file>images/fondo1_blur.png</file>
         <file>images/fondo2_blur.png</file>
+        <file>images/edificioOpcion2.png</file>
+        <file>images/edificio_rotated.png</file>
+        <file>images/edificioOpcion3.png</file>
+        <file>images/edificioOpcion4.png</file>
+        <file>images/edificio_rotatedOpt2.png</file>
+        <file>images/zapelingVerde.png</file>
+        <file>images/zapelingAmarillo.png</file>
+        <file>images/zapelingAzul.png</file>
+        <file>images/zapelingMorado.png</file>
+        <file>images/zapelingRojo.png</file>
+        <file>images/zapelingRosa.png</file>
+        <file>images/zapelingVerde2.png</file>
     </qresource>
 </RCC>

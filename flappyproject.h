@@ -27,7 +27,8 @@ public:
     ~FlappyProject();
     void nextSong();
     void updateCounter();
-    void openGameOver();
+    void openGameOver(bool windowOpened);
+    void showOtherWindow();
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -63,6 +64,7 @@ private:
     QLabel *label_contador;
 
     int score;
+    bool windowOpened=true;
 
     //El tiempo final de los cojones
 

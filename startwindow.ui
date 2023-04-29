@@ -14,7 +14,7 @@
    <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
-   <string>Menú principal</string>
+   <string>Selección de personaje</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 251, 111);</string>
@@ -23,7 +23,7 @@
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>190</y>
+     <y>240</y>
      <width>331</width>
      <height>51</height>
     </rect>
@@ -53,10 +53,10 @@ background-color:rgb(255, 200, 0)</string>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>30</y>
+     <x>89</x>
+     <y>90</y>
      <width>375</width>
-     <height>111</height>
+     <height>110</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -67,7 +67,7 @@ background-color:rgb(255, 200, 0)</string>
       </property>
       <property name="icon">
        <iconset resource="assets.qrc">
-        <normaloff>:/assets/images/flappy_Azul.png</normaloff>:/assets/images/flappy_Azul.png</iconset>
+        <normaloff>:/assets/images/zapelingVerde.png</normaloff>:/assets/images/zapelingVerde.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -84,7 +84,7 @@ background-color:rgb(255, 200, 0)</string>
       </property>
       <property name="icon">
        <iconset resource="assets.qrc">
-        <normaloff>:/assets/images/flappy_Tano.png</normaloff>:/assets/images/flappy_Tano.png</iconset>
+        <normaloff>:/assets/images/zapelingMorado.png</normaloff>:/assets/images/zapelingMorado.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -101,7 +101,7 @@ background-color:rgb(255, 200, 0)</string>
       </property>
       <property name="icon">
        <iconset resource="assets.qrc">
-        <normaloff>:/assets/images/flappy_Seductor.png</normaloff>:/assets/images/flappy_Seductor.png</iconset>
+        <normaloff>:/assets/images/zapelingAmarillo.png</normaloff>:/assets/images/zapelingAmarillo.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -112,37 +112,6 @@ background-color:rgb(255, 200, 0)</string>
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QPushButton" name="Salir">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>280</y>
-     <width>331</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Comic Sans MS</family>
-     <pointsize>-1</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="cursor">
-    <cursorShape>ArrowCursor</cursorShape>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-radius: 20px;
-color: rgb(0, 0, 255);
-font-size: 20px;
-font-family: &quot;Comic Sans MS&quot;;
-font-weight: bold;
-background-color:rgb(255, 200, 0)</string>
-   </property>
-   <property name="text">
-    <string>SALIR DEL JUEGO</string>
-   </property>
   </widget>
  </widget>
  <resources>

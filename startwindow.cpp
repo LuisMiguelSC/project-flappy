@@ -12,7 +12,7 @@ StartWindow::StartWindow(QWidget *parent) :
 
     // Seleccionamos el primer personaje por defecto
     applySelectedStyle(ui->button1);
-    selectedImagePath = ":/assets/images/flappy_Azul.png";
+    selectedImagePath = ":/assets/images/zapelingVerde.png";
     applyUnselectedStyle(ui->button2);
     applyUnselectedStyle(ui->button3);
 
@@ -21,10 +21,7 @@ StartWindow::StartWindow(QWidget *parent) :
     connect(ui->button1, &QPushButton::clicked, this, &StartWindow::on_button1_clicked);
     connect(ui->button2, &QPushButton::clicked, this, &StartWindow::on_button2_clicked);
     connect(ui->button3, &QPushButton::clicked, this, &StartWindow::on_button3_clicked);
-    connect(ui->Salir, &QPushButton::clicked, this, &StartWindow::on_pushSalir_clicked);
-
 }
-
 
 void StartWindow::openGameWindow()
 {
@@ -61,7 +58,7 @@ void StartWindow::onFlappyProjectDestroyed() {
 void StartWindow::on_button1_clicked()
 {
     // Función para poner el sprite del primer personaje
-    selectedImagePath = ":/assets/images/flappy_Azul.png";
+    selectedImagePath = ":/assets/images/zapelingVerde.png";
     applySelectedStyle(ui->button1);
     applyUnselectedStyle(ui->button2);
     applyUnselectedStyle(ui->button3);
@@ -70,7 +67,7 @@ void StartWindow::on_button1_clicked()
 void StartWindow::on_button2_clicked()
 {
     // Función para poner el sprite del segundo personaje
-    selectedImagePath = ":/assets/images/flappy_Tano.png";
+    selectedImagePath = ":/assets/images/zapelingMorado.png";
     applySelectedStyle(ui->button2);
     applyUnselectedStyle(ui->button1);
     applyUnselectedStyle(ui->button3);
@@ -79,7 +76,7 @@ void StartWindow::on_button2_clicked()
 void StartWindow::on_button3_clicked()
 {
     // Función para poner el sprite del tercer personaje
-    selectedImagePath = ":/assets/images/flappy_Seductor.png";
+    selectedImagePath = ":/assets/images/zapelingAmarillo.png";
     applySelectedStyle(ui->button3);
     applyUnselectedStyle(ui->button1);
     applyUnselectedStyle(ui->button2);
@@ -93,8 +90,4 @@ void StartWindow::applyUnselectedStyle(QPushButton *button) {
     button->setStyleSheet("border: none;");
 }
 
-void StartWindow::on_pushSalir_clicked()
-{
-    this->close();
-    this->deleteLater();
-}
+

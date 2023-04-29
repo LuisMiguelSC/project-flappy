@@ -5,14 +5,6 @@
 #include <QTimer>
 #include <QTime>
 #include <QLabel>
-//Para mostrar la tabla de puntuaciones
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <algorithm>
-#include <string>
-#include <sstream>
-
 namespace Ui {
 class gameover;
 }
@@ -24,17 +16,9 @@ class gameover : public QDialog
 public:
     explicit gameover(QWidget *parent = nullptr);
     ~gameover();
-    void tiempo(QString t);
-    void openpuntuacion(QString p);
-    void scoreboard();
-
-    struct Data {
-        std::string tm;
-        int punt;
-        bool operator<(const Data& other) const {
-            return punt > other.punt;
-        }
-    };
+    void ONpuntuacion();
+    void tiempo();
+    void openpuntuacion();
 
 private slots:
     void on_returnMenu_clicked();
@@ -46,9 +30,6 @@ private:
     QLabel *label_contador;
     int score;
 
-
-
 };
-
 
 #endif // GAMEOVER_H

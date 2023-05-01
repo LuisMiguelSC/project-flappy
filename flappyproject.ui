@@ -38,6 +38,9 @@
       <height>171</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -73,17 +76,20 @@
    <widget class="QLabel" name="pipe">
     <property name="geometry">
      <rect>
-      <x>790</x>
-      <y>350</y>
-      <width>141</width>
-      <height>381</height>
+      <x>810</x>
+      <y>370</y>
+      <width>101</width>
+      <height>541</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="assets.qrc">:/assets/images/default_pipe.png</pixmap>
+     <pixmap resource="assets.qrc">:/assets/images/edificioOpcion4.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -92,17 +98,17 @@
    <widget class="QLabel" name="top_pipe">
     <property name="geometry">
      <rect>
-      <x>790</x>
-      <y>-180</y>
-      <width>141</width>
-      <height>381</height>
+      <x>810</x>
+      <y>-390</y>
+      <width>101</width>
+      <height>541</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="assets.qrc">:/assets/images/default_rotated_pipe.png</pixmap>
+     <pixmap resource="assets.qrc">:/assets/images/edificio_rotatedOpt2.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -328,7 +334,7 @@
      <x>0</x>
      <y>0</y>
      <width>1080</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

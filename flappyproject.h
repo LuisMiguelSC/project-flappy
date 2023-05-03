@@ -64,5 +64,6 @@ private:
     QLabel *label_contador;
 
     int score;
+    bool open = false;
 };
 #endif // FLAPPYPROJECT_H

@@ -153,15 +153,6 @@ void FlappyProject::update()
         background_2_x = background_x + ui->background->width();
     }
 
-    // Movemos los dos fondos uno detrás del otro para que haga el efecto de que es uno infinito
-    if (background_x + ui->background->width()< 0){
-        background_x = background_2_x + ui->background_2->width();
-    }
-
-    if (background_2_x + ui->background_2->width()< 0){
-        background_2_x = background_x + ui->background->width();
-    }
-
 
     //Si el pajaro se sale de la pantalla se detiene el juego
     if (bird_pos_y + ui->bird->height() < 0  || bird_pos_y+ui->bird->width() > ui->background->height()){
@@ -182,27 +173,31 @@ void FlappyProject::update()
 
 QString last_time; // Para guardar el tiempo de partida que se ha jugado
 void FlappyProject::openGameOver(){
-    // Crea un objeto de la ventana Game Over
-    gameover *gameOverDialog = new gameover();
+    if (open == false)
+    {
+        // Crea un objeto de la ventana Game Over
+        gameover *gameOverDialog = new gameover();
 
-    // Escribimos en el .txt el tiempo y la puntuación en una nueva fila
-    QString registro = last_time + "," + last_punt;
+        // Escribimos en el .txt el tiempo y la puntuación en una nueva fila
+        QString registro = last_time + "," + last_punt;
 
-    QFile archivo("scoreboard.txt"); // el archivo se crea en el build, así que mirar en esa carpeta
-    if (archivo.open(QIODevice::Append | QIODevice::Text)) {
-        QTextStream out(&archivo);
-        out << registro << Qt::endl;
-        archivo.close();
+        QFile archivo("scoreboard.txt"); // el archivo se crea en el build, así que mirar en esa carpeta
+        if (archivo.open(QIODevice::Append | QIODevice::Text)) {
+            QTextStream out(&archivo);
+            out << registro << Qt::endl;
+            archivo.close();
+        }
+        // Muestra la ventana Game Over
+        gameOverDialog->show();
+        gameOverDialog->tiempo(last_time); // Llamamos a la función de tiempo para que se ponga el tiempo final
+        gameOverDialog->openpuntuacion(last_punt);
+        gameOverDialog->scoreboard();
+        open = true;
+
+        // Cerramos y eliminamos la ventana actual
+        this->close();
+        this->deleteLater();
     }
-    // Muestra la ventana Game Over
-    gameOverDialog->show();
-    gameOverDialog->tiempo(last_time); // Llamamos a la función de tiempo para que se ponga el tiempo final
-    gameOverDialog->openpuntuacion(last_punt);
-    gameOverDialog->scoreboard();
-
-    // Cerramos y eliminamos la ventana actual
-    this->close();
-    this->deleteLater();
 }
 
 

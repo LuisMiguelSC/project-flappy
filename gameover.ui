@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1014</width>
+    <width>895</width>
     <height>501</height>
    </rect>
   </property>
@@ -44,7 +44,7 @@ background-color:rgb(255, 200, 0)</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>180</x>
      <y>10</y>
      <width>531</width>
      <height>101</height>
@@ -392,7 +392,7 @@ background-color: rgb(255, 251, 111);
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>600</x>
+     <x>470</x>
      <y>140</y>
      <width>411</width>
      <height>51</height>
@@ -415,9 +415,9 @@ background-color: rgb(255, 251, 111);
   <widget class="QTextEdit" name="textEdit">
    <property name="geometry">
     <rect>
-     <x>580</x>
+     <x>470</x>
      <y>200</y>
-     <width>371</width>
+     <width>321</width>
      <height>251</height>
     </rect>
    </property>

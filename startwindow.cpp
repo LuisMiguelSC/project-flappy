@@ -90,4 +90,9 @@ void StartWindow::applyUnselectedStyle(QPushButton *button) {
     button->setStyleSheet("border: none;");
 }
 
+void StartWindow::on_Salir_clicked()
+{
+    this->close();
+    this->deleteLater();
+}
 

@@ -1,8 +1,12 @@
 ﻿#include "flappyproject.h"
 #include "ui_flappyproject.h"
 #include "gameover.h"
+#include <QTimer>
 
-#include <Qtimer>
+// Para escribir los resultados en el .txt
+#include <QFile>
+#include <QTextStream>
+
 FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
     : QMainWindow(parent)
     , ui(new Ui::FlappyProject)
@@ -12,10 +16,6 @@ FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
     ui->setupUi(this);
     this->setStyleSheet("QWidget { background-color: transparent; }");
 
-    //Probandooooo
-
-
-    qDebug() << selectedImagePath;
     QPixmap birdPixmap(selectedImagePath);
     ui->bird->setPixmap(birdPixmap.scaled(ui->bird->size(), Qt::KeepAspectRatio));
     if (!birdPixmap.isNull()) {
@@ -72,12 +72,6 @@ FlappyProject::FlappyProject(QWidget *parent, const QString &selectedImagePath)
     // El juego termina en el 5:52 aprox.
 
     score = 0;
-
-    // Conectamos el evento de inicio del juego al método iniciar_juego() (esto para cuando le demos al botón de iniciar)
-    //connect(boton_iniciar_juego, &QPushButton::clicked, this, &Juego::iniciar_juego);
-
-    // Luego también podemos poner que cuando se termine el juego se pare el contador (ya sea por colisión o por final) y que se muestre una pantallita
-    // indicando el tiempo que se ha sobrevivido y la puntuación (número de tubos atravesados con éxito)
 }
 
 FlappyProject::~FlappyProject()
@@ -111,6 +105,7 @@ void FlappyProject::keyPressEvent(QKeyEvent *event)
     }
 }
 
+QString last_punt = "0"; // Para guardar la última puntuación. Inicializamos a 0 (si no lo pones y haces 0 puntos no sale nada en la puntuación)
 void FlappyProject::update()
 {
     /* Metodo encargado de ir actualizando el juego en cada frame */
@@ -145,6 +140,7 @@ void FlappyProject::update()
 
         score++;
         QString score_str = QString::number(score);
+        last_punt = score_str;
         ui->score->setText(score_str);
     }
 
@@ -156,8 +152,6 @@ void FlappyProject::update()
     if (background_2_x + ui->background_2->width()< 0){
         background_2_x = background_x + ui->background->width();
     }
-
-    //qDebug() << "Bird height:" << ui->bird->pos().y();
 
     // Movemos los dos fondos uno detrás del otro para que haga el efecto de que es uno infinito
     if (background_x + ui->background->width()< 0){
@@ -172,57 +166,43 @@ void FlappyProject::update()
     //Si el pajaro se sale de la pantalla se detiene el juego
     if (bird_pos_y + ui->bird->height() < 0  || bird_pos_y+ui->bird->width() > ui->background->height()){
 
-        openGameOver(windowOpened);
+        openGameOver();
     }
 
-    // if((bird_pos_y + ui->bird->height() -3>pipe_y)  && ( ui->bird->x()+ ui->bird->width()>pipe_x )){
     if((bird_pos_y + ui->bird->height() -3>pipe_y)  && ( ui->bird->x()+ ui->bird->width()-10>pipe_x )  &&( ui->bird->x()+ ui->bird->width()<top_pipe_x+ui->pipe->width()) ){
 
-        openGameOver(windowOpened);
+        openGameOver();
     }
 
     if((bird_pos_y+3  <top_pipe_y+ui->top_pipe->height())  &&( ui->bird->x()+ ui->bird->width()-10 >top_pipe_x)&&( ui->bird->x()+ ui->bird->width() <top_pipe_x+ui->top_pipe->width())){
 
-        openGameOver(windowOpened);
+        openGameOver();
     }
-
-
-    //Se reinicia el contador
-
-    //contador=0;
-    // QTime tiempo(0, 0);
-    //tiempo = tiempo.addSecs(contador);
-    // QString tiempo_str;
-    // tiempo_str = tiempo.toString("m:ss");
-    // label_contador->setText(tiempo_str);
-
-    // ui->bird->move(100, 100);
-
-    //bird_pos_y = ui->bird->y();
-    // ui->pipe->move(pipe_x, pipe_y);
-    // ui->top_pipe->move(top_pipe_x, top_pipe_y);
-    // pipe_x = ui->pipe->x();
-    // pipe_y = ui->pipe->y();
-    //top_pipe_x = ui->top_pipe->x();
-    //top_pipe_y = ui->top_pipe->y();
-    // }
-
 }
-void FlappyProject::openGameOver(bool windowOpened){
-    //Evita que la ventana se abra varias veces
-    if (windowOpened){
-        // Crea un objeto de la ventana Game Over
-        gameover *gameOverDialog = new gameover();
 
-        // Cierra y elimina la ventana actual
-        this->close();
-        this->deleteLater();
+QString last_time; // Para guardar el tiempo de partida que se ha jugado
+void FlappyProject::openGameOver(){
+    // Crea un objeto de la ventana Game Over
+    gameover *gameOverDialog = new gameover();
 
-        // Muestra la ventana Game Over
-        gameOverDialog->show();
-        windowOpened=false;
+    // Escribimos en el .txt el tiempo y la puntuación en una nueva fila
+    QString registro = last_time + "," + last_punt;
+
+    QFile archivo("scoreboard.txt"); // el archivo se crea en el build, así que mirar en esa carpeta
+    if (archivo.open(QIODevice::Append | QIODevice::Text)) {
+        QTextStream out(&archivo);
+        out << registro << Qt::endl;
+        archivo.close();
     }
+    // Muestra la ventana Game Over
+    gameOverDialog->show();
+    gameOverDialog->tiempo(last_time); // Llamamos a la función de tiempo para que se ponga el tiempo final
+    gameOverDialog->openpuntuacion(last_punt);
+    gameOverDialog->scoreboard();
 
+    // Cerramos y eliminamos la ventana actual
+    this->close();
+    this->deleteLater();
 }
 
 
@@ -246,18 +226,12 @@ void FlappyProject::nextSong() // Para pasar de una canción a otra
 
 void FlappyProject::updateCounter()
 {
-    contador++;
-    QTime tiempo(0, 0);
-    tiempo = tiempo.addSecs(contador);
     QString tiempo_str;
+    QTime tiempo(0, 0);
+    contador++;
+    tiempo = tiempo.addSecs(contador);
     tiempo_str = tiempo.toString("m:ss");
+    last_time = tiempo_str; // Guardamos el último tiempo
     ui->timer->setText(tiempo_str);
-
-
-
-
-
 }
-
-//probando
 

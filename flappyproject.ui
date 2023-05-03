@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Flappy Project</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="assets.qrc">
+    <normaloff>:/assets/images/default_coin.png</normaloff>:/assets/images/default_coin.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="bird">
     <property name="enabled">
@@ -334,7 +338,7 @@
      <x>0</x>
      <y>0</y>
      <width>1080</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

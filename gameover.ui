@@ -7,11 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>1014</width>
-    <height>604</height>
+    <height>501</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Game Over</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="assets.qrc">
+    <normaloff>:/assets/images/fin.png</normaloff>:/assets/images/fin.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 251, 111);</string>
@@ -19,8 +23,8 @@
   <widget class="QPushButton" name="returnMenu">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>450</y>
+     <x>10</x>
+     <y>430</y>
      <width>301</width>
      <height>51</height>
     </rect>
@@ -388,8 +392,8 @@ background-color: rgb(255, 251, 111);
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>150</y>
+     <x>600</x>
+     <y>140</y>
      <width>411</width>
      <height>51</height>
     </rect>
@@ -412,9 +416,9 @@ background-color: rgb(255, 251, 111);
    <property name="geometry">
     <rect>
      <x>580</x>
-     <y>210</y>
+     <y>200</y>
      <width>371</width>
-     <height>291</height>
+     <height>251</height>
     </rect>
    </property>
    <property name="font">
@@ -425,6 +429,18 @@ background-color: rgb(255, 251, 111);
    </property>
    <property name="styleSheet">
     <string notr="true">color:rgb(0, 0, 255)</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="lineWidth">
+    <number>4</number>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
    </property>
   </widget>
  </widget>

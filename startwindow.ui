@@ -14,7 +14,11 @@
    <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
-   <string>Selección de personaje</string>
+   <string>Menu principal</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="assets.qrc">
+    <normaloff>:/assets/images/menu.png</normaloff>:/assets/images/menu.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 251, 111);</string>

@@ -29,5 +29,7 @@
         <file>images/zapelingRojo.png</file>
         <file>images/zapelingRosa.png</file>
         <file>images/zapelingVerde2.png</file>
+        <file>images/fin.png</file>
+        <file>images/menu.png</file>
     </qresource>
 </RCC>

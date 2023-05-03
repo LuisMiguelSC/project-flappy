@@ -14,7 +14,7 @@
    <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
-   <string>Menu principal</string>
+   <string>Menú principal</string>
   </property>
   <property name="windowIcon">
    <iconset resource="assets.qrc">
